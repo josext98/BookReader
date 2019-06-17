@@ -15,7 +15,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         Name="mainWindows"
-        Title="MainWindow" Height="760" Width="1360" WindowState="Maximized" WindowStartupLocation="CenterScreen" Icon="Imagenes/instagram.png" SizeToContent="WidthAndHeight" WindowStyle="None">
+        Title="MainWindow" Height="766" Width="1360" WindowState="Maximized" Icon="Imagenes/instagram.png"  BorderThickness="1,0,0,0" SnapsToDevicePixels="True">
     <Window.Resources>
         <DataTemplate x:Key="PhotosTemplate">
             <Grid
@@ -32,11 +32,11 @@
     </Window.Resources>
 
     <Grid Margin="0,0,2,1">
-        <DockPanel  HorizontalAlignment="Left" Height="41" LastChildFill="False" VerticalAlignment="Top" Width="1340" >
+        <StackPanel Orientation="Horizontal" Height="46" VerticalAlignment="Top" Width="1340" Background="{DynamicResource {x:Static SystemColors.MenuBrushKey}}" >
             <StackPanel Width="490" Orientation="Horizontal">
-                <Ellipse Fill="#FFF4F4F5" Height="28" Stroke="Black" VerticalAlignment="Top" Width="29" Margin="10,4,5,0"/>
+                <!--<Ellipse Fill="#FFF4F4F5" Height="28" Stroke="Black" VerticalAlignment="Top" Width="29" Margin="10,4,5,0"/>
                 <Ellipse Fill="#FFF4F4F5" Height="28" Stroke="Black" VerticalAlignment="Top" Width="29" Margin="0,4,5,0"/>
-                <Ellipse Fill="#FFF4F4F5" Height="28" Stroke="Black" VerticalAlignment="Top" Width="29" Margin="0,4,5,0"/>
+                <Ellipse Fill="#FFF4F4F5" Height="28" Stroke="Black" VerticalAlignment="Top" Width="29" Margin="0,4,5,0"/>-->
             </StackPanel>
             <StackPanel Width="479" Orientation="Horizontal" Margin="0,0,20,10">
                 <TextBlock FontSize="20" Text="Biblioteca" TextAlignment="Center" Margin="0,10,0,0" Width="115"/>
@@ -45,65 +45,80 @@
             </StackPanel>
             <StackPanel Width="302" Margin="0,10,0,0" >
                 <TextBox FontSize="18" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Buscar"   >
-
                 </TextBox>
+            </StackPanel>
+        </StackPanel>
+        <!--<StackPanel Background="Gray" Height="2" Margin="0,60,0,672"/>-->
 
-            </StackPanel>
-        </DockPanel>
-        <StackPanel  Height="183"  Margin="0,80,0,0" VerticalAlignment="Top" >
+        <StackPanel  Height="183"  Margin="0,90,0,0" VerticalAlignment="Top" >
             <StackPanel Height="39" Margin="0,0,10,0">
-                <TextBlock FontSize="20" Style="{DynamicResource MaterialDesignTitleTextBlock}" Text=">Recientes" Height="38" FontWeight="Bold" Margin="57,0,10,0" />
+                <TextBlock FontSize="20" Style="{DynamicResource MaterialDesignTitleTextBlock}" Text=">Recientes" Height="38" FontWeight="Bold" Margin="47,0,10,0" />
             </StackPanel>
-            <StackPanel>
+            <StackPanel Orientation="Vertical">
                 <ListView  x:Name="TvBox" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,2,0,0">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid Columns="4" HorizontalAlignment="Center"/>
+                            <UniformGrid  Columns="5" HorizontalAlignment="Center"/>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <materialDesign:Card Width="224" VerticalAlignment="Center" Margin="0,0,15,0" Height="90">
-                                <StackPanel  Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                                    <Image Source="{Binding ImageData}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Stretch="UniformToFill" />
-                                    <TextBlock Text="{Binding Title}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
+                            <materialDesign:Card VerticalAlignment="Center" Margin="20" Height="76">
+                                <StackPanel  Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                    <Ellipse  Fill="DarkRed" Height="49" Stroke="Black" VerticalAlignment="Top" Width="45" Margin="5,11,5,0"/>
+                                    <StackPanel Orientation="Vertical" Margin="0,10,0,0" Width="117">
+                                        <TextBlock Text="{Binding BookName}" FontSize="18" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="16,0,0,0" Height="33" />
+                                        <TextBlock Text="{Binding PageReaded}" FontSize="12" Foreground="Gray" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="16,0,0,0" />
+                                    </StackPanel>
+                                    <Image  Source="{Binding Isfavorite}" Width="22" Margin="0,0,0,48"/>
                                 </StackPanel>
                             </materialDesign:Card>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+
+                <!--<materialDesign:Card VerticalAlignment="Center" Margin="555,0,607,0" Height="76">
+                    <StackPanel  Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Ellipse  Fill="DarkRed" Height="49" Stroke="Black" VerticalAlignment="Top" Width="45" Margin="5,11,5,0"/>
+                        <StackPanel Orientation="Vertical" Margin="0,10,0,0" Width="117">
+                            <TextBlock Text="El Real" FontSize="18" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="16,0,0,0" Height="33" />
+                            <TextBlock Text="{Binding PageReaded}" Foreground="Gray" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="16,0,0,0" />
+                        </StackPanel>
+                        <Image  Source="{Binding Isfavorite}" Width="22" Margin="0,0,0,48"/>
+                    </StackPanel>
+                </materialDesign:Card>-->
             </StackPanel>
         </StackPanel>
-        <StackPanel  Orientation="Vertical" HorizontalAlignment="Left" Height="449"  Margin="10,292,0,0" VerticalAlignment="Top" Width="1330">
+        <StackPanel  Orientation="Vertical" HorizontalAlignment="Left" Height="449"  Margin="0,292,0,0" VerticalAlignment="Top" Width="1330">
             <StackPanel  Width="1326" Margin="0,0,0,0">
-                <TextBlock FontSize="20" Style="{DynamicResource MaterialDesignTitleTextBlock}" FontWeight="Bold" Text=">Todos los Libros" Height="40" Margin="42,0,36,0" />
+                <TextBlock FontSize="20" Style="{DynamicResource MaterialDesignTitleTextBlock}" FontWeight="Bold" Text=">Todos los Libros" Height="40" Margin="44,0,36,0" />
             </StackPanel>
-            <StackPanel CanVerticallyScroll="True" Orientation="Vertical" Margin="2,0,0,0" Height="390">
-                <ListView x:Name="BookT" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
+            <StackPanel Orientation="Vertical" Margin="2,0,0,0" Height="400">
+                <ListView Margin="0,0,0,20"  ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="BookT" HorizontalAlignment="Stretch" Height="392"  >
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid Columns="4" HorizontalAlignment="Center"/>
+                            <UniformGrid Columns="5" Margin="50" VerticalAlignment="Center" />
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <materialDesign:Card Padding="10" VerticalAlignment="Center" Margin="0,10,15,0"  Height="278">
-                                <StackPanel  Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
-                                    <StackPanel Background="DarkRed" Height="177" Margin="10,10"/>
-                                    <TextBlock Text="{Binding BookName}"  HorizontalAlignment="Center" FontSize="25"  Height="32"/>
-                                    <TextBlock Text="{Binding BookPage}" HorizontalAlignment="Center" FontSize="15" Foreground="Gray"  Height="20" Margin="79,0,69,0" Width="34"/>
+                            <materialDesign:Card Padding="10" VerticalAlignment="Center" Margin="20" Height="222">
+                                <StackPanel  Orientation="Vertical" Height="400"   Margin="0,0,0,0">
+                                    <StackPanel Background="DarkRed"  Height="143" />
+                                    <TextBlock Text="{Binding BookName}"  HorizontalAlignment="Center" FontSize="22"  Height="32"/>
+                                    <TextBlock Text="{Binding BookPage}" HorizontalAlignment="Center" FontSize="15" Foreground="Gray"  Height="20" Margin="56,0,46,0" Width="34"/>
                                 </StackPanel>
                             </materialDesign:Card>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <materialDesign:Card Padding="10" VerticalAlignment="Center" Margin="544,0,584,0" Height="254">
-                    <StackPanel  Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.5">
-                        <StackPanel Background="DarkRed" Height="161" Margin="10,10"/>
+                <!--<materialDesign:Card Padding="10" VerticalAlignment="Center" Margin="0,0,931,0" Height="306">
+                    <StackPanel  Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.5" Margin="0,0,156,-10">
+                        <StackPanel Background="DarkRed" Height="223" Margin="10,10,0,10" HorizontalAlignment="Left" Width="229"/>
                         <TextBlock Text="{Binding BookName}"  HorizontalAlignment="Center" FontSize="25"  Height="32"/>
-                        <TextBlock Text="{Binding BookPage}" HorizontalAlignment="Center" FontSize="15" Foreground="Gray"  Height="20" Margin="79,0,69,0" Width="34"/>
+                        <TextBlock Text="{Binding BookPage}" HorizontalAlignment="Center" FontSize="15" Foreground="Gray"  Height="20" Margin="56,0,46,0" Width="34"/>
                     </StackPanel>
-                </materialDesign:Card>
+                </materialDesign:Card>-->
             </StackPanel>
         </StackPanel>
     </Grid>

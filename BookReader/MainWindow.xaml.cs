@@ -19,6 +19,7 @@ namespace BookReader
             new MovidData{Title="Movie 3", ImageData=LoadImage("Imagenes/instagram.png")},
             new MovidData{Title="Movie 3", ImageData=LoadImage("Imagenes/instagram.png")},
             new MovidData{Title="Movie 3", ImageData=LoadImage("Imagenes/instagram.png")},
+            new MovidData{Title="Movie 3", ImageData=LoadImage("Imagenes/instagram.png")},
            };
 
             this.BookT.ItemsSource = new MovieBook[]
